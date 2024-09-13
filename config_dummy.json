@@ -1,0 +1,8 @@
+{
+    "esHost": "http://localhost:9200",
+    "esUname":"elastic",
+    "esPwd":"",
+    "esSoeIndex": "soe_data",
+    "soeFilesBaseUrl": "http://localhost/Reports/SOE/",
+    "daysOffset": 1
+}
