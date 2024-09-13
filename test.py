@@ -1,6 +1,6 @@
-from soeFetcher import fetchSoeFromCsv
+from src.soeFetcher import fetchSoeFromCsv
 import datetime as dt
-from jsonConfig import loadJsonConfig
+from src.jsonConfig import loadJsonConfig
 
 conf = loadJsonConfig()
 

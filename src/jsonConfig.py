@@ -12,7 +12,7 @@ class JsonConfig:
     daysOffset: int = field(default=1)
 
 
-def loadJsonConfig(fName="config.json") -> JsonConfig:
+def loadJsonConfig(fName="config/config.json") -> JsonConfig:
     global jsonConfig
     with open(fName) as f:
         data = json.load(f)
