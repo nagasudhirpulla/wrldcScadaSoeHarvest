@@ -27,6 +27,8 @@ def fetchSoeFromCsv(reqDt: dt.datetime, baseUrl: str) -> list[object]:
     soeFileLines = soeFileLines[2:-2]
     # print(soeFileLines)
 
+    localTz = dt.datetime.utcnow().astimezone().tzinfo
+
     # get objects from rest of the lines
     soeRecords = []
     for l in soeFileLines:
@@ -42,9 +44,11 @@ def fetchSoeFromCsv(reqDt: dt.datetime, baseUrl: str) -> list[object]:
         fieldTimeNs = int(recordVals[7])
         fieldDt = dt.datetime.strptime(f"{fieldDateStr} {
                                        fieldTimeStr}", "%d-%m-%Y %H:%M:%S") + dt.timedelta(microseconds=int(fieldTimeNs/1000))
+        fieldDt = fieldDt.replace(tzinfo=localTz)
 
         reportingTime = dt.datetime.strptime(
             recordVals[8]+"000", "%Y-%m-%d %H:%M:%S.%f")
+        reportingTime = reportingTime.replace(tzinfo=localTz)
 
         recordObj = {
             "source": "SCADA",
